@@ -6,27 +6,36 @@ public class EmployeeWageBuilder {
     int IS_PART_TIME = 2;
     int EMP_RATE_PER_HOUR = 20;
     int FULL_MONTH = 20;
+    int MAXIMUM_WORKING_HOUR = 100;
+
     public static void main(String[] args) {
         EmployeeWageBuilder emp = new EmployeeWageBuilder();
-        emp.attendanceCheck();
+        emp.WageCheck();
     }
-    public void attendanceCheck(){
+
+    public void WageCheck() {
         int empHrs = 0;
         int daily_Wage = 0;
         int monthly_Wage = 0;
-        Random random=new Random();
-        int empCheck=random.nextInt()%3;
+        int totalEmpHrs = 0;
+        int totalSalary = 0;
+        int totalWorkingDays = 0;
+        Random random = new Random();
+        int empCheck = random.nextInt() % 3;
+        while (totalEmpHrs < MAXIMUM_WORKING_HOUR && totalWorkingDays < FULL_MONTH) {
+            if (empCheck == IS_FULL_TIME) {
+                empHrs = 8;
+            } else if (empCheck == IS_PART_TIME) {
+                empHrs = 4;
 
-        if (empCheck==IS_FULL_TIME){
-            empHrs = 8;
-        } else if (empCheck==IS_PART_TIME) {
-            empHrs = 4;
-
-        } else if (empCheck==IS_ABSENT){
-            empHrs = 0;
+            } else if (empCheck == IS_ABSENT) {
+                empHrs = 0;
+            }
+            totalEmpHrs = totalEmpHrs + empHrs;
+            totalWorkingDays++;
         }
-        daily_Wage = (empHrs*EMP_RATE_PER_HOUR);
-        monthly_Wage = (FULL_MONTH*empHrs*EMP_RATE_PER_HOUR);
-        System.out.println("Employee Monthly wage is :"+ monthly_Wage+" & daily wage is :"+daily_Wage);
+        totalSalary = totalEmpHrs * empHrs;
+        System.out.println(totalSalary);
+
     }
 }
