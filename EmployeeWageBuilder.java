@@ -7,12 +7,10 @@ public class EmployeeWageBuilder {
     int EMP_RATE_PER_HOUR = 20;
     int FULL_MONTH = 20;
     int MAXIMUM_WORKING_HOUR = 100;
-
     public static void main(String[] args) {
         EmployeeWageBuilder emp = new EmployeeWageBuilder();
         emp.WageCheck();
     }
-
     public void WageCheck() {
         int empHrs = 0;
         int daily_Wage = 0;
@@ -27,7 +25,6 @@ public class EmployeeWageBuilder {
                 empHrs = 8;
             } else if (empCheck == IS_PART_TIME) {
                 empHrs = 4;
-
             } else if (empCheck == IS_ABSENT) {
                 empHrs = 0;
             }
@@ -36,6 +33,5 @@ public class EmployeeWageBuilder {
         }
         totalSalary = totalEmpHrs * empHrs;
         System.out.println(totalSalary);
-
     }
 }
