@@ -1,4 +1,3 @@
-import java.util.Random;
 public class EmployeeWageBuilder {
     //CONSTANTS
     public static final int IS_FULL_TIME = 1;
@@ -16,10 +15,9 @@ public class EmployeeWageBuilder {
         int totalEmpHrs = 0;
         int totalSalary = 0;
         int totalWorkingDays = 0;
-        Random random = new Random();
         while (totalEmpHrs <= MAXIMUM_WORKING_HOUR && totalWorkingDays < FULL_MONTH_WORKING_DAYS) {
             totalWorkingDays = totalWorkingDays + 1;
-            int empCheck = random.nextInt() % 3;
+            int empCheck = (int) Math.floor(Math.random() * 10) % 3;
             switch (empCheck) {
                 case IS_PART_TIME:
                     empHrs = 4;
@@ -34,6 +32,6 @@ public class EmployeeWageBuilder {
             System.out.println("Day: " + totalWorkingDays + " Employee Hour: " + empHrs);
         }
         totalSalary = totalEmpHrs * EMP_RATE_PER_HOUR;
-        System.out.println("Total Employee Wage: " + totalSalary);
+        System.out.println("Total Working Hours is:" + totalEmpHrs + " Total Employee Wage: " + totalSalary);
     }
 }
